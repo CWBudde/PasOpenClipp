@@ -14,7 +14,7 @@ var
   Error: TOcipError;
 begin
   try
-    Error := ocipInitialize(ContextPtr, PAnsiChar('Intel'), CL_DEVICE_TYPE_CPU);
+    Error := ocipInitialize(ContextPtr, nil, CL_DEVICE_TYPE_CPU);
     if Error <> 0 then
       Writeln(ocipGetErrorName(Error));
 
