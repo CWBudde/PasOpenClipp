@@ -6,11 +6,19 @@ program Basic;
 
 uses
   System.SysUtils,
+  CL,
   OpenCLIPP in '..\..\Source\OpenCLIPP.pas';
 
+var
+  ContextPtr: TOcipContext;
+  Error: TOcipError;
 begin
   try
-    { TODO -oUser -cConsole Main : Code hier einfügen }
+    Error := ocipInitialize(ContextPtr, PAnsiChar('Intel'), CL_DEVICE_TYPE_CPU);
+    if Error <> 0 then
+      Writeln(ocipGetErrorName(Error));
+
+    ReadLn;
   except
     on E: Exception do
       Writeln(E.ClassName, ': ', E.Message);
